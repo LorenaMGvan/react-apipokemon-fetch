@@ -23,18 +23,37 @@ export const Pokemon = () => {
   useEffect(() => {
     getPokemones();
   }, [current]);
+
+  const styleUlList = {
+    padding: '0px',
+  };
   
+  const styleList = {
+    listStyle: 'none',
+    background: '#3827111c',
+    marginBottom: '10px',
+    padding: '10px 15px',
+  };
+
+  const styleButton = {
+    background: '#1789d7',
+    color: '#fff',
+    borderRadius: '5px 3px',
+    margin: '3px 5px',
+  }
+
   return (
     <>
-      <ul>
+    <h2>Ejemplo Pokemones</h2>
+      <ul style={styleUlList}>
         {pokemones.map((item, index) => (
-          <li key={index}>
+          <li key={index} style={styleList}>
             {item.name}
         </li>
         ))}
       </ul>
-      <button onClick={() => previous !== null && setCurrent(previous)}>Anterior</button>
-      <button onClick={() => next !== null && setCurrent(next) }>Siguiente</button>
+      <button style={styleButton} onClick={() => previous !== null && setCurrent(previous)}>Anterior</button>
+      <button style={styleButton} onClick={() => next !== null && setCurrent(next) }>Siguiente</button>
     </>
   );
 };
